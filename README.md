@@ -80,27 +80,31 @@ Access to application operations is controlled through role-based authorization.
 
 ## Screenshots
 
-### Administrator Dashboard
+### 1. Home Page
+
+![Home Page](screenshots/home.png)
+
+### 2. Administrator Dashboard
 
 ![Administrator Dashboard](screenshots/admin-dashboard.png)
 
-### Employee Management
+### 3. Employee Management
 
 ![Employee Management](screenshots/admin-employee-management.png)
 
-### Manager Dashboard – Anomalies
+### 4. Manager Dashboard – Anomalies
 
 ![Manager Anomalies](screenshots/manager-anomalies.png)
 
-### Employee Attendance
+### 5. Employee Attendance
 
 ![Employee Attendance](screenshots/employee-attendance.png)
 
-### Shifts and Rosters
+### 6. Shifts and Rosters
 
 ![Shifts and Rosters](screenshots/auditor-shifts-rosters.png)
 
-### Reports and Audit History
+### 7. Reports and Audit History
 
 ![Reports and Audit History](screenshots/reports-audit-history.png)
 
