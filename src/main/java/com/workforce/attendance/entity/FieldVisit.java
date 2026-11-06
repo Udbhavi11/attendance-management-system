@@ -16,9 +16,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "field_visits")
-@Getter
-@Setter
-@NoArgsConstructor
 public class FieldVisit {
 
     @Id

@@ -9,9 +9,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "employee_rosters")
-@Getter
-@Setter
-@NoArgsConstructor
 public class EmployeeRoster {
 
     @Id

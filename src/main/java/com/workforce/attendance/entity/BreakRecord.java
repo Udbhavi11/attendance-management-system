@@ -9,9 +9,6 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "break_records")
-@Getter
-@Setter
-@NoArgsConstructor
 public class BreakRecord {
 
     @Id

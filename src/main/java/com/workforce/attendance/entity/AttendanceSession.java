@@ -9,9 +9,6 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "attendance_sessions")
-@Getter
-@Setter
-@NoArgsConstructor
 public class AttendanceSession {
 
     @Id

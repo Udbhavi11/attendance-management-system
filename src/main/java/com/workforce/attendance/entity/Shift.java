@@ -11,9 +11,6 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "shifts")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Shift {
 
     @Id

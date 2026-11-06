@@ -13,9 +13,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "holidays")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Holiday {
 
     @Id
