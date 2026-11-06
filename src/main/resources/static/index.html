@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123f32">
+    <title>Workforce Attendance</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<header class="app-header">
+    <div class="header-content">
+        <a class="brand" href="/" aria-label="Workforce Attendance home">
+            <span class="brand-mark">W</span>
+            <span>
+                <strong>Workforce</strong>
+                <small>ATTENDANCE MANAGEMENT</small>
+            </span>
+        </a>
+
+        <div class="header-actions">
+            <span id="connectionStatus" class="connection-status offline">
+                Checking connection...
+            </span>
+            <button id="backBtn" class="header-btn" type="button">← Back</button>
+            <button id="refreshBtn" class="header-btn" type="button">↻ Refresh</button>
+        </div>
+    </div>
+</header>
+
+<!-- ROLE SELECTION -->
+<section id="roleSelection" class="welcome-screen">
+    <div class="welcome-copy">
+        <span class="eyebrow">WORKFORCE OPERATIONS</span>
+        <h1>Every shift.<br>Right on time.</h1>
+        <p>Attendance, locations and field teams — all in one simple workspace.</p>
+    </div>
+
+    <div class="portal-panel">
+        <div class="portal-heading">
+            <div>
+                <span class="eyebrow">WELCOME</span>
+                <h2>Choose your workspace</h2>
+                <p>Select your role to continue securely.</p>
+            </div>
+        </div>
+
+        <div class="role-tabs" aria-label="Choose portal">
+            <button type="button" data-select-role="ADMIN">Admin</button>
+            <button type="button" data-select-role="MANAGER">Manager</button>
+            <button type="button" data-select-role="EMPLOYEE">Employee</button>
+            <button type="button" data-select-role="AUDITOR">Auditor</button>
+        </div>
+
+        <div class="role-intro">
+            <div class="role-symbol">✦</div>
+            <h3>Your work, in one place.</h3>
+            <p>
+                Sign in to access the tools and information available
+                for your role.
+            </p>
+        </div>
+
+        <div class="portal-footer">
+            <span>Secure access</span>
+            <span>•</span>
+            <span>Mobile friendly</span>
+            <span>•</span>
+            <span>Workforce portal</span>
+        </div>
+    </div>
+</section>
+
+<!-- LOGIN -->
+<section id="roleAccess" class="access-screen" hidden>
+    <div class="login-card">
+        <button id="backToRolesBtn" class="text-back-btn" type="button">
+            ← Back to portals
+        </button>
+
+        <div class="login-brand-mark">W</div>
+        <span class="eyebrow">WORKFORCE PORTAL</span>
+        <h2 id="accessTitle">Welcome back</h2>
+        <p id="accessDescription">
+            Enter your account details to continue.
+        </p>
+
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="loginUsername">Username</label>
+                <input
+                    type="text"
+                    id="loginUsername"
+                    name="username"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+            </div>
+
+            <button id="loginBtn" class="primary-btn login-submit" type="submit">
+                Sign in
+            </button>
+        </form>
+
+        <p id="loginMessage" role="status" aria-live="polite"></p>
+
+        <div class="login-note">
+            Your access is verified using your assigned account role.
+        </div>
+    </div>
+</section>
+
+<!-- MAIN APPLICATION -->
+<div class="app-layout" id="appLayout" hidden>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <span class="brand-mark">W</span>
+            <div>
+                <strong>Workforce</strong>
+                <small id="portalHeading">Portal</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <button class="nav-btn active"
+                    data-section="dashboard"
+                    data-roles="EMPLOYEE,MANAGER,ADMIN,AUDITOR">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-btn"
+                    data-section="employees" data-roles="ADMIN">
+                <span>♙</span> Employee Management
+            </button>
+
+            <button class="nav-btn"
+                    data-section="teams" data-roles="ADMIN">
+                <span>♧</span> Team Management
+            </button>
+
+            <button class="nav-btn"
+                    data-section="team" data-roles="MANAGER">
+                <span>♧</span> My Team
+            </button>
+
+            <button class="nav-btn"
+                    data-section="offices" data-roles="ADMIN">
+                <span>⌖</span> Office Locations
+            </button>
+
+            <button class="nav-btn"
+                    data-section="shifts"
+                    data-roles="EMPLOYEE,MANAGER,ADMIN,AUDITOR">
+                <span>◷</span> Shifts & Rosters
+            </button>
+
+            <button class="nav-btn"
+                    data-section="attendance" data-roles="EMPLOYEE">
+                <span>◷</span> Attendance
+            </button>
+
+            <button class="nav-btn"
+                    data-section="visits"
+                    data-roles="EMPLOYEE,MANAGER,ADMIN,AUDITOR">
+                <span>⌖</span> Field Visits
+            </button>
+
+            <button class="nav-btn"
+                    data-section="sync" data-roles="EMPLOYEE,ADMIN">
+                <span>↻</span> Offline Sync
+            </button>
+
+            <button class="nav-btn"
+                    data-section="corrections"
+                    data-roles="EMPLOYEE,MANAGER">
+                <span>▤</span> Corrections
+            </button>
+
+            <button class="nav-btn"
+                    data-section="anomalies"
+                    data-roles="ADMIN,MANAGER,AUDITOR">
+                <span>⚑</span> Anomalies
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-user">
+                <span class="user-avatar">U</span>
+                <div>
+                    <strong id="sidebarUsername">Signed in</strong>
+                    <small id="sidebarRole">User</small>
+                </div>
+            </div>
+            <button id="logoutBtn" class="logout-btn" type="button">
+                ↪ Logout
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="content-topbar">
+            <div>
+                <span class="eyebrow">WORKSPACE</span>
+                <h1 id="dashboardTitle">Dashboard</h1>
+                <p id="welcomeMessage">Welcome to Workforce Management.</p>
+            </div>
+            <span id="currentDate" class="date-label">--</span>
+        </div>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page-section active">
+            <div id="employeeProfileSection"></div>
+            <div id="employeeDashboardSection" data-roles="EMPLOYEE"></div>
+            <div id="managerDashboardSection" data-roles="MANAGER"></div>
+            <div id="adminDashboardSection" data-roles="ADMIN"></div>
+            <div id="auditorDashboardSection" data-roles="AUDITOR"></div>
+        </section>
+
+        <section id="employees" class="page-section">
+            <h2>Employee Management</h2>
+            <p class="section-description">Manage employee records and employment status.</p>
+            <div id="employeeSection"></div>
+        </section>
+
+        <section id="teams" class="page-section">
+            <h2>Team Management</h2>
+            <p class="section-description">Create and manage organizational teams.</p>
+            <div id="teamManagementSection"></div>
+        </section>
+
+        <section id="team" class="page-section">
+            <h2>My Team</h2>
+            <p class="section-description">View employees assigned to you.</p>
+            <div id="teamSection"></div>
+        </section>
+
+        <section id="offices" class="page-section">
+            <h2>Office Locations</h2>
+            <p class="section-description">Manage office locations and geofence settings.</p>
+            <div id="officeSection"></div>
+        </section>
+
+        <section id="shifts" class="page-section">
+            <h2>Shifts & Rosters</h2>
+            <p class="section-description">View and manage shift schedules.</p>
+            <div id="shiftSection"></div>
+        </section>
+
+        <section id="attendance" class="page-section">
+            <h2>Employee Attendance</h2>
+            <p class="section-description">Record your attendance and manage breaks.</p>
+
+            <div class="card attendance-card">
+                <div class="attendance-meta">
+                    <p>Employee ID: <strong id="employeeId">--</strong></p>
+                    <p>Date: <strong id="attendanceDate">--</strong></p>
+                </div>
+
+                <div class="status-panel">
+                    <span>ATTENDANCE STATUS</span>
+                    <h3 id="attendanceStatus">Not Checked In</h3>
+                </div>
+
+                <div class="location-panel">
+                    <h3>Location verification</h3>
+                    <p id="locationStatus">Location not requested</p>
+                    <button id="getLocationBtn" class="secondary-btn" type="button">
+                        Get My Location
+                    </button>
+                </div>
+
+                <div class="attendance-actions">
+                    <button id="checkInBtn" class="primary-btn" type="button">Check In</button>
+                    <button id="checkOutBtn" class="danger-btn" type="button">Check Out</button>
+                    <button id="startBreakBtn" class="secondary-btn" type="button">Start Break</button>
+                    <button id="endBreakBtn" class="secondary-btn" type="button">End Break</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="visits" class="page-section">
+            <h2>Field Visits</h2>
+            <p class="section-description">Record and review field visit activity.</p>
+            <div id="visitSection"></div>
+        </section>
+
+        <section id="sync" class="page-section">
+            <h2>Offline Synchronization</h2>
+            <p class="section-description">Review and synchronize saved attendance requests.</p>
+
+            <div class="sync-summary">
+                <div class="summary-item"><h3 id="pendingCount">0</h3><p>Pending</p></div>
+                <div class="summary-item"><h3 id="acceptedCount">0</h3><p>Accepted</p></div>
+                <div class="summary-item"><h3 id="rejectedCount">0</h3><p>Rejected</p></div>
+                <div class="summary-item"><h3 id="reviewCount">0</h3><p>Requires Review</p></div>
+            </div>
+
+            <button id="syncBtn" class="primary-btn" type="button">Sync Now</button>
+            <h3 class="requests-heading">Attendance Requests</h3>
+            <div id="requestList">
+                <p class="empty-message">No attendance requests yet.</p>
+            </div>
+        </section>
+
+        <section id="corrections" class="page-section">
+            <h2>Attendance Corrections</h2>
+            <p class="section-description">Submit and review attendance correction requests.</p>
+            <div id="correctionSection"></div>
+        </section>
+
+        <section id="anomalies" class="page-section">
+            <h2>Attendance Anomalies</h2>
+            <p class="section-description">Review flagged attendance events.</p>
+            <div id="anomalySection"></div>
+        </section>
+    </main>
+</div>
+
+<!-- =========================================
+     JAVASCRIPT FILE REFERENCES
+     Keep this loading order
+     ========================================= -->
+
+<!-- Offline storage and synchronization -->
+<script src="/js/offline-storage.js"></script>
+<script src="/js/sync.js"></script>
+
+<!-- Application and authentication -->
+<script src="/js/app.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/navigation.js"></script>
+
+<!-- Role-specific modules -->
+<script src="/js/employee.js"></script>
+<script src="/js/manager.js"></script>
+<script src="/js/admin.js"></script>
+
+<!-- Attendance and workforce management -->
+<script src="/js/attendance.js"></script>
+<script src="/js/office-storage.js"></script>
+<script src="/js/team.js"></script>
+<script src="/js/shift.js"></script>
+<script src="/js/field-visit.js"></script>
+
+<!-- Corrections and anomaly monitoring -->
+<script src="/js/correction.js"></script>
+<script src="/js/anomaly.js"></script>
+
+<!-- Reports -->
+<script src="/js/reports.js"></script>
+</body>
+</html>
