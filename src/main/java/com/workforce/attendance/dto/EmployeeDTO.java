@@ -58,8 +58,8 @@ public class EmployeeDTO {
 
     // Application login role, separate from assignmentType
     @Pattern(
-        regexp = "EMPLOYEE|MANAGER",
-        message = "System role must be EMPLOYEE or MANAGER"
+        regexp = "EMPLOYEE|MANAGER|AUDITOR",
+        message = "System role must be EMPLOYEE, MANAGER or AUDITOR"
     )
     private String systemRole = "EMPLOYEE";
 

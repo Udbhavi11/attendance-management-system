@@ -1,3 +1,4 @@
+
 package com.workforce.attendance.service.impl;
 
 import java.util.List;
@@ -222,8 +223,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                 String username = validateUsername(requestedUsername);
 
-                // Check username uniqueness without using a lambda
-                // that captures the reassigned account variable.
                 var existingAccount =
                         userAccountRepository.findByUsername(username);
 
@@ -357,10 +356,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .toUpperCase(Locale.ROOT);
 
         if (!normalizedRole.equals("EMPLOYEE")
-                && !normalizedRole.equals("MANAGER")) {
+                && !normalizedRole.equals("MANAGER")
+                && !normalizedRole.equals("AUDITOR")) {
 
             throw new IllegalArgumentException(
-                    "System role must be EMPLOYEE or MANAGER");
+                    "System role must be EMPLOYEE, MANAGER or AUDITOR");
         }
 
         return normalizedRole;
